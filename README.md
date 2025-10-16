@@ -15,6 +15,8 @@ select * ,lag(total_payment) over(order by year_) as prev_year_payment from cte
 select *,(total_payment-prev_year_payment)/total_payment * 100 as percent_changed 
 from cte2 where prev_year_payment is not null;
 ```
+### Result:
+![output](images)
 ## Analysis based on sales, freight and delivery time.
  ### 2)Find the no. of days taken to deliver each order from the order’s
 ### purchase date as delivery time.
