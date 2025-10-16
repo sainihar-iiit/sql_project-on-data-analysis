@@ -1,8 +1,8 @@
 # Data Analysis using SQL
 ## Impact on Economy: Analyze the money movement by e-commerce by looking
-at order prices, freight and others.
+## at order prices, freight and others.
 ### 1. Get the % increase in the cost of orders from year 2017 to 2018
-(include months between Jan to Aug only).
+### (include months between Jan to Aug only).
 ``` sql
 with cte as(
 select extract(year from order_purchase_timestamp) as year_,
@@ -17,10 +17,10 @@ from cte2 where prev_year_payment is not null;
 ```
 ## Analysis based on sales, freight and delivery time.
  ### 2)Find the no. of days taken to deliver each order from the order’s
-purchase date as delivery time.
-Also, calculate the difference (in days) between the estimated & actual
-delivery date of an order.
-Do this in a single query.
+### purchase date as delivery time.
+### Also, calculate the difference (in days) between the estimated & actual
+### delivery date of an order.
+### Do this in a single query.
 ``` sql
  select order_id,customer_id,
  datediff(date(order_delivered_customer_date),date (order_purchase_timestamp)) as delivery_time,
@@ -30,7 +30,7 @@ from orders;
 
 
 ### 3)Find out the top 5 states where the order delivery is really fast as
-compared to the estimated date of delivery
+### compared to the estimated date of delivery
 ``` sql
 with cte as (
  select c.customer_state,
@@ -50,11 +50,11 @@ count(distinct o.order_id) as no_of_orders
 from  payments p  join orders o on p.order_id = o.order_id  group by payment_type,year_,month_ ;
 ```
 ### 5)  During what time of the day, do the Brazilian customers mostly place
-their orders? (Dawn, Morning, Afternoon or Night)
- ■ 0-6 hrs : Dawn
- ■ 7-12 hrs : Mornings
- ■ 13-18 hrs : Afternoon
- ■ 19-23 hrs : Night
+### their orders? (Dawn, Morning, Afternoon or Night)
+###  ■ 0-6 hrs : Dawn
+###  ■ 7-12 hrs : Mornings
+###  ■ 13-18 hrs : Afternoon
+###  ■ 19-23 hrs : Night
 ``` sql
  select extract(hour from order_purchase_timestamp) as hrs ,count(order_id) as no_of_orders,
 case when extract(hour from order_purchase_timestamp) between 0 and 6 then 'Dawn'
