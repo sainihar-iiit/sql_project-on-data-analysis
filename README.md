@@ -16,7 +16,7 @@ select *,(total_payment-prev_year_payment)/total_payment * 100 as percent_change
 from cte2 where prev_year_payment is not null;
 ```
 ### Result:
-![output](images)
+![output](images/perct_change_year_wise.jpg)
 ## Analysis based on sales, freight and delivery time.
  ### 2)Find the no. of days taken to deliver each order from the order’s
 ### purchase date as delivery time.
